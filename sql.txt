@@ -1,0 +1,27 @@
+CREATE TABLE partners (
+	id SERIAL PRIMARY KEY,
+	type char(3) NOT NULL,
+	name varchar(50) NOT NULL,
+	dir_name varchar(50) NOT NULL,
+	email text NOT NULL,
+	phone varchar(30) NOT NULL,
+	adress text NOT NULL, 
+	inn char(10) NOT NULL,
+	raiting float4 NOT NULL
+);
+
+CREATE TABLE products (
+	id SERIAL PRIMARY KEY,
+	type varchar(30) NOT NULL,
+	name text NOT NULL, 
+	articul char(7),
+	min_count float4 NOT NULL
+);
+
+CREATE TABLE sales (
+	id SERIAL PRIMARY KEY,
+	product_id int REFERENCES products(id),
+	partner_id int REFERENCES partners(id), 
+	count int NOT NULL, 
+	data_sale date NOT NULL
+);
